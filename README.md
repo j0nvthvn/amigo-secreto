@@ -1,6 +1,6 @@
-# Amigo Secreto
+# Te Tocó
 
-App Android y web para organizar un Amigo Secreto a distancia. Cada participante entra con un link personal, sin crear cuenta. El sorteo se calcula en el servidor y nadie, ni siquiera quien organiza, puede leerlo completo.
+Te Tocó es una app Android y web para organizar un Amigo Secreto a distancia. Cada participante entra con un link personal, sin crear cuenta. El sorteo se calcula en el servidor y nadie, ni siquiera quien organiza, puede leerlo completo.
 
 Proyecto de portafolio: Postgres con acceso solo por RPC, sesiones anónimas de Supabase, un algoritmo de sorteo con restricciones y notificaciones nativas y web.
 

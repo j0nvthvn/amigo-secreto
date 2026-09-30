@@ -27,3 +27,5 @@ Decisiones tomadas durante la implementación en lo que el diseño no dice o dic
 | I21 | 2026-09-30 | `deno lint` sin la regla `no-import-prefix` | Las Edge Functions importan con `npm:` en línea, como documenta Supabase, sin un import map por función |
 | I22 | 2026-09-30 | `reveal_result` funciona en un grupo archivado | Ver el propio resultado es lectura; la API no lista `group_archived` para esta RPC |
 | I23 | 2026-09-30 | La lista de deseos de la persona revelada se lee de `wishlist_items` (RLS) con su `receiver_member_id` | `reveal_result` devuelve solo id y nombre, como indica la API |
+| I24 | 2026-09-30 | Nombre de la app: **Te Tocó**. Paquete Android `tech.jflores.tetoco`, esquema `tetoco` | Es la frase del momento central ("te tocó Camila"), corta y en español de Chile. Resuelve el primer pendiente del diseño |
+| I25 | 2026-09-30 | `WEB_ORIGIN` = `https://tetoco.jflores.tech`; links `https://tetoco.jflores.tech/r/<token>` | Coincide con el nombre y el esquema. Resuelve el segundo pendiente del diseño |

@@ -1,4 +1,4 @@
 /** Textos de interfaz en español de Chile. */
 export const strings = {
-  appName: 'Amigo Secreto',
+  appName: 'Te Tocó',
 } as const;

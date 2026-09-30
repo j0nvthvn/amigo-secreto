@@ -1,13 +1,14 @@
 {
   "expo": {
-    "name": "Amigo Secreto",
-    "slug": "amigo-secreto",
+    "name": "Te Tocó",
+    "slug": "te-toco",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "amigosecreto",
+    "scheme": "tetoco",
     "userInterfaceStyle": "automatic",
     "android": {
+      "package": "tech.jflores.tetoco",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
