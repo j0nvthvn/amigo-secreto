@@ -1,0 +1,26 @@
+node_modules/
+dist/
+.expo/
+web-build/
+expo-env.d.ts
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log
+
+# Android nativo (se genera con prebuild) y firmas
+/apps/mobile/android
+/apps/mobile/ios
+*.jks
+*.keystore
+*.p8
+*.p12
+*.key
+*.pem
+
+# Supabase
+supabase/.branches
+supabase/.temp
+supabase/functions/.env

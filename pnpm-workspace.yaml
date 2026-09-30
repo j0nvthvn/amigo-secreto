@@ -1,0 +1,10 @@
+packages:
+  - apps/*
+  - packages/*
+
+# React Native y Metro esperan un node_modules plano
+nodeLinker: hoisted
+
+allowBuilds:
+  esbuild: true
+  supabase: true

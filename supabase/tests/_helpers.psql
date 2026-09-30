@@ -1,0 +1,2 @@
+-- Helpers de pgTAP. Se incluyen con \ir desde cada prueba; viven en pg_temp y
+-- desaparecen al cerrar la conexión. La extensión .psql evita que pg_prove los ejecute como prueba.
