@@ -7,7 +7,7 @@
     "node": ">=24"
   },
   "scripts": {
-    "typecheck": "pnpm -r typecheck && deno check supabase/functions",
+    "typecheck": "pnpm -r typecheck && tsc -p . && deno check supabase/functions",
     "lint": "eslint . && deno lint supabase/functions",
     "test": "tsx --test supabase/functions/_shared/draw.test.ts \"packages/*/src/**/*.test.ts\"",
     "test:db": "supabase test db",

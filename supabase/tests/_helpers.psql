@@ -61,5 +61,28 @@ language sql as $$
   select id from public.members where group_id = p_group_id and display_name = p_display_name;
 $$;
 
+-- Sorteo válido sin exclusiones: cada miembro le regala al siguiente (un solo ciclo)
+create or replace function pg_temp.cycle_pairs(p_group_id uuid) returns jsonb
+language sql as $$
+  with ordered as (
+    select id, row_number() over (order by created_at, id) as n, count(*) over () as total
+    from public.members where group_id = p_group_id
+  )
+  select jsonb_agg(jsonb_build_object('giver', a.id, 'receiver', b.id) order by a.n)
+  from ordered a join ordered b on b.n = a.n % a.total + 1;
+$$;
+
+-- Guarda el sorteo como lo haría draw-group
+create or replace function pg_temp.commit(p_group_id uuid, p_pairs jsonb default null) returns void
+language plpgsql as $$
+declare
+  v_pairs jsonb := coalesce(p_pairs, pg_temp.cycle_pairs(p_group_id));
+begin
+  perform set_config('role', 'service_role', true);
+  perform public.commit_draw(p_group_id, v_pairs);
+  perform set_config('role', 'postgres', true);
+end;
+$$;
+
 -- 0002 quita el EXECUTE por defecto de PUBLIC: login y logout se llaman también como authenticated
 grant execute on function pg_temp.login(uuid), pg_temp.logout() to authenticated;

@@ -2,5 +2,10 @@
   "nodeModulesDir": "none",
   "compilerOptions": {
     "strict": true
+  },
+  "lint": {
+    "rules": {
+      "exclude": ["no-import-prefix"]
+    }
   }
 }

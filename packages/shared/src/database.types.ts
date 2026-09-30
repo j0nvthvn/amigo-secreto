@@ -328,6 +328,11 @@ isOneToOne: false
 "_new_invite_token":
 { Args: Record<PropertyKey, never>; Returns: string
                            },
+"_parse_pairs":
+{ Args: { "p_group_id": string,"p_pairs": Json }; Returns: {
+              "giver": string,"receiver": string
+            }[]
+                           },
 "_raise":
 { Args: { "p_code": string }; Returns: undefined
                            },
@@ -349,6 +354,9 @@ isOneToOne: false
 "add_member":
 { Args: { "p_display_name": string,"p_group_id": string }; Returns: Json
                            },
+"commit_draw":
+{ Args: { "p_group_id": string,"p_pairs": Json }; Returns: undefined
+                           },
 "create_group":
 { Args: { "p_budget_amount"?: number,"p_currency"?: string,"p_event_date": string,"p_name": string,"p_owner_display_name"?: string,"p_owner_participates"?: boolean,"p_place"?: string,"p_timezone"?: string }; Returns: string
                            },
@@ -358,6 +366,11 @@ isOneToOne: false
 "get_activity":
 { Args: { "p_before_id"?: number,"p_group_id": string,"p_limit"?: number }; Returns: {
               "created_at": string,"id": number,"kind": Database["public"]['Enums']["group_event_kind"],"member_name": string
+            }[]
+                           },
+"get_exclusions":
+{ Args: { "p_group_id": string }; Returns: {
+              "giver_member_id": string,"receiver_member_id": string
             }[]
                            },
 "get_group":
@@ -396,6 +409,18 @@ isOneToOne: false
                            },
 "rename_member":
 { Args: { "p_display_name": string,"p_member_id": string }; Returns: undefined
+                           },
+"reset_draw":
+{ Args: { "p_group_id": string }; Returns: undefined
+                           },
+"reveal_result":
+{ Args: { "p_group_id": string }; Returns: Json
+                           },
+"set_draw_options":
+{ Args: { "p_avoid_mutual": boolean,"p_group_id": string,"p_single_cycle": boolean }; Returns: undefined
+                           },
+"set_exclusions":
+{ Args: { "p_group_id": string,"p_pairs": Json }; Returns: undefined
                            },
 "update_group":
 { Args: { "p_budget_amount"?: number,"p_currency"?: string,"p_event_date": string,"p_group_id": string,"p_name": string,"p_place"?: string }; Returns: undefined

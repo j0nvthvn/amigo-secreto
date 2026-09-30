@@ -26,3 +26,5 @@ pnpm test:db                               # pruebas pgTAP
 pnpm exec supabase functions serve &       # Edge Functions en local
 pnpm test:integration                      # pruebas de integración
 ```
+
+Con Podman en un sistema con SELinux (por ejemplo Fedora), el contenedor de Edge Functions no puede leer `supabase/functions` hasta etiquetarla una vez con `chcon -R -t container_file_t supabase/functions`.

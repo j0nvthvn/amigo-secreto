@@ -51,7 +51,7 @@ jobs:
         run: |
           pnpm exec supabase functions serve > functions.log 2>&1 &
           for i in $(seq 1 60); do
-            curl -s -o /dev/null http://127.0.0.1:54321/functions/v1/ && break
+            grep -q "Serving functions" functions.log && break
             sleep 2
           done
           pnpm test:integration
