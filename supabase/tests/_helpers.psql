@@ -1,2 +1,65 @@
 -- Helpers de pgTAP. Se incluyen con \ir desde cada prueba; viven en pg_temp y
 -- desaparecen al cerrar la conexión. La extensión .psql evita que pg_prove los ejecute como prueba.
+
+-- Crea un usuario de Auth. Sin p_anonymous es un usuario "con Google".
+create or replace function pg_temp.new_user(p_anonymous boolean default false) returns uuid
+language sql as $$
+  insert into auth.users (id, instance_id, aud, role, email, is_anonymous, created_at, updated_at)
+  values (gen_random_uuid(), '00000000-0000-0000-0000-000000000000', 'authenticated', 'authenticated',
+          case when p_anonymous then null else gen_random_uuid()::text || '@test.local' end,
+          p_anonymous, now(), now())
+  returning id;
+$$;
+
+-- Actúa como ese usuario: rol authenticated y claims del JWT
+create or replace function pg_temp.login(p_uid uuid) returns void
+language plpgsql as $$
+begin
+  perform set_config('role', 'postgres', true);
+  perform set_config('request.jwt.claims', json_build_object(
+    'sub', p_uid,
+    'role', 'authenticated',
+    'is_anonymous', (select is_anonymous from auth.users where id = p_uid))::text, true);
+  perform set_config('role', 'authenticated', true);
+end;
+$$;
+
+-- Vuelve a postgres para preparar datos o leer tablas internas
+create or replace function pg_temp.logout() returns void
+language plpgsql as $$
+begin
+  perform set_config('role', 'postgres', true);
+  perform set_config('request.jwt.claims', '', true);
+end;
+$$;
+
+-- Grupo de prueba con dueño participante y n miembros más (como postgres)
+create or replace function pg_temp.new_group(p_owner uuid, p_members integer default 0) returns uuid
+language plpgsql as $$
+declare
+  v_group_id uuid;
+begin
+  insert into public.groups (owner_id, name, event_date)
+  values (p_owner, 'Grupo de prueba', current_date + 30)
+  returning id into v_group_id;
+  insert into public.members (group_id, display_name, user_id, claimed_at)
+  values (v_group_id, 'Dueño', p_owner, now());
+  insert into public.members (group_id, display_name)
+  select v_group_id, 'Persona ' || i from generate_series(1, p_members) i;
+  return v_group_id;
+end;
+$$;
+
+create or replace function pg_temp.token_of(p_group_id uuid, p_display_name text) returns text
+language sql as $$
+  select i.token from public.member_invites i join public.members m on m.id = i.member_id
+  where m.group_id = p_group_id and m.display_name = p_display_name;
+$$;
+
+create or replace function pg_temp.member_id(p_group_id uuid, p_display_name text) returns uuid
+language sql as $$
+  select id from public.members where group_id = p_group_id and display_name = p_display_name;
+$$;
+
+-- 0002 quita el EXECUTE por defecto de PUBLIC: login y logout se llaman también como authenticated
+grant execute on function pg_temp.login(uuid), pg_temp.logout() to authenticated;
