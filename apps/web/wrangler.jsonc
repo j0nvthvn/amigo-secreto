@@ -1,0 +1,11 @@
+{
+  // Sitio estático en Cloudflare Workers (lo que reemplaza a Pages para proyectos nuevos)
+  "name": "te-toco",
+  "compatibility_date": "2026-09-26",
+  "assets": {
+    "directory": "./dist",
+    // Rutas sin archivo (/r/<token>, /privacidad…) responden index.html
+    "not_found_handling": "single-page-application"
+  },
+  "routes": [{ "pattern": "tetoco.jflores.tech", "custom_domain": true }]
+}
