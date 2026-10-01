@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "tech.jflores.tetoco",
+      "sha256_cert_fingerprints": [
+        "A0:8C:3B:CB:05:A1:0C:F7:F4:E4:45:09:95:1C:A2:7C:E2:D3:5E:A7:EB:23:55:41:A1:91:03:0C:EA:31:D2:47"
+      ]
+    }
+  }
+]

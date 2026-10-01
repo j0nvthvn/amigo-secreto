@@ -8,3 +8,5 @@ nodeLinker: hoisted
 allowBuilds:
   esbuild: true
   supabase: true
+  # Solo lo usa `wrangler dev`; para `wrangler pages deploy` no hace falta
+  workerd: false

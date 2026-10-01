@@ -143,6 +143,78 @@ export const strings = {
     version: (v: string) => `Versión ${v}`,
     signOut: 'Cerrar sesión (desarrollo)',
   },
+  web: {
+    tagline: 'Organiza tu Amigo Secreto a distancia, sin que nadie pueda ver el sorteo completo.',
+    features: [
+      'Cada participante entra con su link personal, sin crear cuenta.',
+      'Exclusiones y parejas: nadie le regala a quien no debe.',
+      'Ni quien organiza puede ver el resultado de los demás.',
+      'Lista de deseos y chat anónimo con tu amigo secreto.',
+    ],
+    playSoon: 'Muy pronto en Google Play',
+    openInApp: 'Abrir en la app',
+    openInAppHelp: '¿Tienes Te Tocó instalada? Ábrelo ahí para recibir avisos.',
+    privacyLink: 'Política de privacidad',
+    deleteAccountLink: 'Eliminar mi cuenta',
+    notFound: 'Esta página no existe.',
+    archivedTitle: 'Este grupo ya terminó',
+  },
+  privacy: {
+    title: 'Política de privacidad',
+    updated: 'Última actualización: 1 de octubre de 2026',
+    sections: [
+      {
+        title: 'Qué datos guardamos',
+        body: [
+          'Los nombres de los participantes, escritos por quien organiza el grupo.',
+          'El correo de la cuenta de Google de quienes crean grupos o guardan su acceso con Google.',
+          'Las listas de deseos, los mensajes del chat y los reportes de mensajes.',
+          'Los tokens para enviar notificaciones al teléfono o al navegador.',
+        ],
+      },
+      {
+        title: 'Para qué los usamos',
+        body: [
+          'Solo para que funcione el sorteo: mostrar a cada persona su resultado, la lista de deseos, el chat y los avisos.',
+          'No hay publicidad, analítica ni rastreo de terceros, y no vendemos ni cedemos datos a nadie.',
+        ],
+      },
+      {
+        title: 'Quién puede ver qué',
+        body: [
+          'Cada participante ve solo a quién le regala. Nadie, ni siquiera quien organiza, puede ver el sorteo completo desde la app o la web.',
+          'El chat es anónimo: quien recibe un mensaje de su amigo secreto no sabe quién lo escribió.',
+          'Limitación conocida: el administrador del servicio tiene acceso técnico a la base de datos. Solo la consulta para revisar reportes de mensajes.',
+        ],
+      },
+      {
+        title: 'Cuánto tiempo los guardamos',
+        body: [
+          'Cada grupo se borra automáticamente 60 días después de la fecha del evento, con sus participantes, listas, mensajes y sorteo.',
+          'Puedes eliminar tu cuenta cuando quieras desde la app o desde la página para eliminar tu cuenta.',
+        ],
+      },
+      {
+        title: 'Dónde se guardan',
+        body: ['En Supabase (base de datos y autenticación) y Cloudflare (sitio web). Los avisos se envían a través de Expo y de los servicios de notificaciones de Google y de los navegadores.'],
+      },
+    ],
+    contact: (email: string) => `Para cualquier consulta o para ejercer tus derechos sobre tus datos, escribe a ${email}.`,
+  },
+  deleteAccount: {
+    title: 'Eliminar mi cuenta',
+    intro: 'Al eliminar tu cuenta se borra lo siguiente:',
+    items: [
+      'Los grupos que organizas, con todo su contenido.',
+      'Los mensajes que escribiste.',
+      'Tus listas de deseos.',
+      'Tus suscripciones a notificaciones.',
+      'Tu acceso a los grupos donde participas: tu lugar queda libre para que quien organiza te envíe un link nuevo.',
+    ],
+    howApp: 'Desde la app: Ajustes → Eliminar mi cuenta.',
+    howEmail: (email: string) =>
+      `Si ya no tienes acceso a la app, escribe a ${email} desde el correo de tu cuenta de Google y la eliminamos en un plazo de 7 días.`,
+  },
   activity: {
     member_added: (name: string) => `Se agregó a ${name}`,
     member_renamed: (name: string) => `Se renombró a ${name}`,

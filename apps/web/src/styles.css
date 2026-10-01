@@ -1,0 +1,298 @@
+:root {
+  --primary: #c8102e;
+  --primary-text: #ffffff;
+  --text: #1f2933;
+  --muted: #6b7280;
+  --bg: #f6f5f2;
+  --card: #ffffff;
+  --border: #e3e1dc;
+  --ok-bg: #e3f4e8;
+  --ok-text: #15803d;
+  --chip: #efede8;
+  --error-bg: #fdecec;
+  --error-text: #b91c1c;
+  --link: #1d4ed8;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: #ef4459;
+    --text: #ece9e4;
+    --muted: #a3a09a;
+    --bg: #171614;
+    --card: #22201d;
+    --border: #36332e;
+    --ok-bg: #173322;
+    --ok-text: #86efac;
+    --chip: #2e2b27;
+    --error-bg: #3b1717;
+    --error-text: #fca5a5;
+    --link: #93c5fd;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+a {
+  color: var(--link);
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin: 0 0 4px;
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: 1.15rem;
+  margin: 0 0 8px;
+}
+
+h3 {
+  font-size: 1rem;
+  margin: 16px 0 8px;
+}
+
+p {
+  margin: 0 0 8px;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  padding: 16px;
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.brand {
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.content {
+  flex: 1;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 16px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  padding: 24px 16px;
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: var(--muted);
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.banner {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.banner p {
+  margin: 0;
+  flex: 1 1 200px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.center {
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 2.4rem;
+  color: var(--primary);
+  margin-top: 24px;
+}
+
+.lead {
+  font-size: 1.15rem;
+}
+
+.features {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 8px;
+}
+
+.prose ul {
+  padding-left: 20px;
+  display: grid;
+  gap: 6px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 12px;
+  border: none;
+  background: var(--primary);
+  color: var(--primary-text);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button.secondary {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.error {
+  background: var(--error-bg);
+  color: var(--error-text);
+  border-radius: 12px;
+  padding: 12px;
+  margin: 0;
+}
+
+.result .receiver {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0 0 8px;
+}
+
+.form {
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.form label {
+  display: grid;
+  gap: 4px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.form input {
+  min-height: 48px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  padding: 0 12px;
+  font: inherit;
+  font-weight: 400;
+}
+
+.wishlist,
+.members,
+.activity {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.wishlist li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.wishlist li > div {
+  display: grid;
+  min-width: 0;
+}
+
+.wish-url {
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+}
+
+.members li,
+.activity li {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.activity time {
+  font-size: 0.85rem;
+}
+
+.badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  background: var(--chip);
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 0.8rem;
+}
+
+.badge.ok {
+  background: var(--ok-bg);
+  color: var(--ok-text);
+  font-weight: 600;
+}
